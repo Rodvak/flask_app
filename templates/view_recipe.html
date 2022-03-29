@@ -1,0 +1,26 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/view.css') }}">
+    
+<div class="nav flex align-center">
+    <h1>Recipe: {{recipe.name}}</h1>
+    <div>
+        <a href="/" class="new">Dashboard</a>
+        <a href="/logout" class="leave">Log Out</a>
+    </div>
+</div>
+
+
+<br>
+<div class="bg">
+    <p>{{recipe.name}}</p>
+    <p>{{recipe.creator.first_name}}</p>
+    {% if recipe.under30 == 1 %}
+    <p>Yes</p>
+    {% else %}
+    <p>No</p>
+    {% endif %}
+    <p>{{recipe.instructions}}</p>
+    <p>{{recipe.date_made.strftime('%Y-%m-%d')}}</p>
+</div>
+
+
+<br>

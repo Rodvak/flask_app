@@ -1,0 +1,48 @@
+<link rel="stylesheet" href="{{ url_for('static', filename='css/view.css') }}">
+
+<div class="nav flex align-center">
+    <h1>Welcome, {{user.first_name}}</h1>
+    <div>
+        <a href="/" class="new">Dashboard</a>
+        <a href="/logout" class="leave">Log Out</a>
+    </div>
+</div>
+
+
+<h1>Edit Recipe</h1>
+<div class="body">
+    <form action="/recipes/update" method="post" class="flex">
+        <div class="left flex flex-column justify-between">
+            <div>
+                <input type="hidden" name="id" value="{{recipe.id}}">
+                <label for="name">Name:</label>
+                <input type="text" name="name" value="{{recipe.name}}">
+            </div>
+            <div>
+                <label for="description">Description:</label>
+                <textarea name="description" id="" cols="30" rows="10">{{recipe.description}}</textarea>
+            </div>
+            <div>
+                <label for="instructions">Instructions:</label>
+                <textarea name="instructions" id="" cols="30" rows="10">{{recipe.instructions}}</textarea>
+            </div>
+        </div>
+        <div class="right flex flex-column justify-between">
+            <div>
+                <label for="date_made">Date Made On:</label>
+                <input type="date" name="date_made" value="{{recipe.date_made.strftime('%Y-%m-%d')}}">
+            </div>
+            <div>
+                <label for="under30">Under 30 Minutes?</label>
+                <input type="radio" name="under30" value="1">
+                <label for="1">Yes</label>
+                <input type="radio" name="under30" value="0">
+                <label for="0">No</label>
+            </div>
+            <div>
+                <input type="submit" value="Update Recipe">
+            </div>
+        </div>
+    </form>
+</div>
+
